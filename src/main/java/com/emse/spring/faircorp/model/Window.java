@@ -27,6 +27,7 @@ public class Window {
         this.name = name;
         this.windowStatus = windowStatus;
         this.room=room;
+
     }
 
     public void setId(Long id) {

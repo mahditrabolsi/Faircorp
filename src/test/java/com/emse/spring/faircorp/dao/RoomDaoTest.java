@@ -15,7 +15,7 @@ class RoomDaoTest {
 
     @Autowired
     private RoomDao roomDao;
-
+    //this comment is just for the issue on gitlab
     @Test
     public void shouldFindARoom() {
         Room room = roomDao.getReferenceById(-10L);

@@ -1,4 +1,4 @@
 package com.emse.spring.faircorp.dao;
 
-public class BuildingDaoCustomImpl {
+public class BuildingDaoCustomImpl implements BuildingDaoCustom{
 }

@@ -25,15 +25,15 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-jar {
-	manifest {
-		attributes 'Main-Class': 'com.emse.spring.faircorp.FaircorpApplication'
-	}
-
-}
-task javadocJar(type: Jar, dependsOn: javadoc) {
-	group = 'Documentation'
-	archiveClassifier = 'javadoc'
-	from javadoc.destinationDir
-}
+//jar {
+//	manifest {
+//		attributes 'Main-Class': 'com.emse.spring.faircorp.FaircorpApplication'
+//	}
+//
+//}
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//	group = 'Documentation'
+//	archiveClassifier = 'javadoc'
+//	from javadoc.destinationDir
+//}
 

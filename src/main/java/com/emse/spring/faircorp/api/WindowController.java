@@ -12,9 +12,9 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController // (1)
-@RequestMapping("/api/windows") // (2)
-@Transactional // (3)
+@RestController
+@RequestMapping("/api/windows")
+@Transactional
 public class WindowController {
 
     private final WindowDao windowDao;
@@ -25,7 +25,7 @@ public class WindowController {
         this.roomDao = roomDao;
     }
 
-    @GetMapping // (5)
+    @GetMapping
     public List<WindowDto> findAll() {
         return windowDao.findAll().stream().map(WindowDto::new).collect(Collectors.toList());  // (6)
     }
@@ -45,14 +45,14 @@ public class WindowController {
     @PostMapping // (8)
     public WindowDto create(@RequestBody WindowDto dto) {
         // WindowDto must always contain the window room
-        Room room = roomDao.getById(dto.getRoomId());
+        Room room = roomDao.getReferenceById(dto.getRoomId());
         Window window = null;
         // On creation id is not defined
         if (dto.getId() == null) {
             window = windowDao.save(new Window( dto.getName(), dto.getWindowStatus(),room));
         }
         else {
-            window = windowDao.getById(dto.getId());  // (9)
+            window = windowDao.getReferenceById(dto.getId());  // (9)
             window.setWindowStatus(dto.getWindowStatus());
         }
         return new WindowDto(window);

@@ -20,6 +20,9 @@ public class Room {
 
     private Double target_temperature;
 
+    @ManyToOne(optional = false)
+    private Building building;
+
     @OneToMany(mappedBy = "room")
     private List<Heater> heaters;
 
@@ -34,6 +37,12 @@ public class Room {
     public Room(Integer floor, String name) {
         this.floor = floor;
         this.name = name;
+    }
+
+    public Room(Integer floor, String name, Building building) {
+        this.floor = floor;
+        this.name = name;
+        this.building = building;
     }
 
     public List<Heater> getHeaters() {
@@ -92,6 +101,11 @@ public class Room {
         this.target_temperature = target_temperature;
     }
 
+    public Building getBuilding() {
+        return building;
+    }
 
-
+    public void setBuilding(Building building) {
+        this.building = building;
+    }
 }

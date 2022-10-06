@@ -48,6 +48,11 @@ public class RoomController {
     public RoomDto findById(@PathVariable Long room_id) {
         return roomDao.findById(room_id).map(RoomDto::new).orElse(null);
     }
+    //get By Building id
+    @GetMapping(path = "/building/{building_id}")
+    public List<RoomDto> findByBuildingId(@PathVariable Long building_id) {
+        return roomDao.findByBuildingId(building_id).stream().map(RoomDto::new).collect(Collectors.toList());
+    }
     //delete a room
     @DeleteMapping(path = "/{room_id}")
     public void delete(@PathVariable Long room_id) {

@@ -48,12 +48,10 @@ public class RoomController {
     public RoomDto findById(@PathVariable Long room_id) {
         return roomDao.findById(room_id).map(RoomDto::new).orElse(null);
     }
-    //get By Building id
     @GetMapping(path = "/building/{building_id}")
     public List<RoomDto> findByBuildingId(@PathVariable Long building_id) {
         return roomDao.findByBuildingId(building_id).stream().map(RoomDto::new).collect(Collectors.toList());
     }
-    //delete a room
     @DeleteMapping(path = "/{room_id}")
     public void delete(@PathVariable Long room_id) {
         roomDao.deleteById(room_id);
@@ -70,7 +68,7 @@ public class RoomController {
     //switch the room heaters
     @PutMapping(path = "/{room_id}/switchHeaters")
     public RoomDto switchHeaters(@PathVariable Long room_id) {
-        Room room = roomDao.getOne(room_id);
+        Room room = roomDao.getReferenceById(room_id);
         room.getHeaters().forEach(heater ->heater.setHeaterStatus(heater.getHeaterStatus() == HeaterStatus.ON ? HeaterStatus.OFF: HeaterStatus.ON));
         return new RoomDto(room);
     }

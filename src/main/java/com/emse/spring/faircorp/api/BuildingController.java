@@ -27,7 +27,8 @@ public class BuildingController {
 
     }
 
-    //Add a new building
+
+
     @PostMapping
     public BuildingDto create(@RequestBody BuildingDto dto) {
         Building building = null;
@@ -40,7 +41,6 @@ public class BuildingController {
         }
         return new BuildingDto(building);
     }
-    //Read a building
     @GetMapping(path = "/{building_id}")
     public BuildingDto findById(@PathVariable Long building_id) {
         return buildingDao.findById(building_id).map(BuildingDto::new).orElse(null);

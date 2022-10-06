@@ -8,6 +8,7 @@ import java.util.List;
 public class Building{
 
     @Id
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false)
@@ -20,9 +21,7 @@ public class Building{
 
     public Building() {
     }
-    public Building(String name) {
-        this.name = name;
-    }
+
 
     public Building(String name, String address) {
         this.name = name;

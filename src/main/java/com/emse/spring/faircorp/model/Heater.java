@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Heater {
 
     @Id
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false)

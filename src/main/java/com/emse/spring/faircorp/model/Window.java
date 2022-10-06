@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Table(name = "RWindow")
 public class Window {
     @Id
+    @GeneratedValue
     private Long id;
 
     @Column(nullable = false,length = 255)

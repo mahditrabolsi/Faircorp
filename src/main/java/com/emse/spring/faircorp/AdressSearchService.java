@@ -23,7 +23,7 @@ public class AdressSearchService {
     }
     public List<ApiGouvAdressDto> getAdress(List<String> params){
         String uri = UriComponentsBuilder.fromUriString("/search")
-                .queryParam("q", params.stream().collect(Collectors.joining("+")))
+                .queryParam("q", String.join("+", params))
                 .queryParam("limit", 15)
                 .build().toUriString();
         return restTemplate.getForObject(uri, ApiGouvResponseDto.class).getFeatures().stream()

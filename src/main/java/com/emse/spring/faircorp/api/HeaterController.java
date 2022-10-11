@@ -24,12 +24,10 @@ public class HeaterController {
         this.heaterDao = heaterDao;
         this.roomDao = roomDao;
     }
-    //get all heaters
     @GetMapping
     public List<HeaterDto> findAll() {
         return heaterDao.findAll().stream().map(HeaterDto::new).collect(Collectors.toList());
     }
-    //Add or update a heater
     @PostMapping
     public HeaterDto create(@RequestBody HeaterDto dto) {
         Room room= roomDao.getReferenceById(dto.getRoomId());
@@ -43,13 +41,11 @@ public class HeaterController {
         return new HeaterDto(heater);
     }
 
-    //read a heater
     @GetMapping(path = "/{heater_id}")
     public HeaterDto findById(@PathVariable Long heater_id) {
         return heaterDao.findById(heater_id).map(HeaterDto::new).orElse(null);
     }
 
-    //delete a heater
     @DeleteMapping(path = "/{heater_id}")
     public void delete(@PathVariable Long heater_id) {
         heaterDao.deleteById(heater_id);

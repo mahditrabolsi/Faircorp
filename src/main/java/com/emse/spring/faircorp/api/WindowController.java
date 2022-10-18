@@ -35,7 +35,7 @@ public class WindowController {
         return windowDao.findWindowByRoomId(room_id).stream().map(WindowDto::new).collect(Collectors.toList());
     }
 
-    @PutMapping(path = "/switch/{window_id}")
+    @PostMapping(path = "/switch/{window_id}")
     public WindowDto switchStatus(@PathVariable Long id) {
         Window window = windowDao.findById(id).orElseThrow(IllegalArgumentException::new);
         window.setWindowStatus(window.getWindowStatus() == WindowStatus.OPEN ? WindowStatus.CLOSED: WindowStatus.OPEN);

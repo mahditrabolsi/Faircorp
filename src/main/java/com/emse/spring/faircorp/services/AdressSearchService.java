@@ -1,4 +1,4 @@
-package com.emse.spring.faircorp;
+package com.emse.spring.faircorp.services;
 
 import com.emse.spring.faircorp.dto.ApiGouvAdressDto;
 import com.emse.spring.faircorp.dto.ApiGouvFeatureDto;

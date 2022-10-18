@@ -1,12 +1,10 @@
 package com.emse.spring.faircorp.api;
 
-import com.emse.spring.faircorp.AdressSearchService;
+import com.emse.spring.faircorp.services.AdressSearchService;
 import com.emse.spring.faircorp.dto.ApiGouvAdressDto;
-import com.emse.spring.faircorp.dto.ApiGouvResponseDto;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.util.Arrays;
 import java.util.List;
 
 @RestController

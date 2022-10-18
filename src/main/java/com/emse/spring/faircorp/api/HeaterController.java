@@ -46,7 +46,7 @@ public class HeaterController {
     public List<HeaterDto> findHeatersByRoomId(@PathVariable Long room_id) {
         return heaterDao.findHeaterByRoomId(room_id).stream().map(HeaterDto::new).collect(Collectors.toList());
     }
-    @PutMapping(path = "/{heater_id}/switch")
+    @PutMapping(path = "/switch/{heater_id}")
     public HeaterDto switchStatus(@PathVariable Long heater_id) {
         Heater heater = heaterDao.getReferenceById(heater_id);
         heater.setHeaterStatus(heater.getHeaterStatus() == HeaterStatus.ON ? HeaterStatus.OFF : HeaterStatus.ON);

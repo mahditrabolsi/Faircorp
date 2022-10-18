@@ -4,6 +4,7 @@ import com.emse.spring.faircorp.dao.HeaterDao;
 import com.emse.spring.faircorp.dao.RoomDao;
 import com.emse.spring.faircorp.dto.HeaterDto;
 import com.emse.spring.faircorp.model.Heater;
+import com.emse.spring.faircorp.model.HeaterStatus;
 import com.emse.spring.faircorp.model.Room;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +46,12 @@ public class HeaterController {
     public List<HeaterDto> findHeatersByRoomId(@PathVariable Long room_id) {
         return heaterDao.findHeaterByRoomId(room_id).stream().map(HeaterDto::new).collect(Collectors.toList());
     }
-
+    @PutMapping(path = "/{heater_id}/switch")
+    public HeaterDto switchStatus(@PathVariable Long heater_id) {
+        Heater heater = heaterDao.getReferenceById(heater_id);
+        heater.setHeaterStatus(heater.getHeaterStatus() == HeaterStatus.ON ? HeaterStatus.OFF : HeaterStatus.ON);
+        return new HeaterDto(heater);
+    }
     @DeleteMapping(path = "/{heater_id}")
     public void delete(@PathVariable Long heater_id) {
         heaterDao.deleteById(heater_id);

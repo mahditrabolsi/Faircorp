@@ -36,6 +36,7 @@ public class SpringSecurityConfig {
     @Order(1)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
+                .csrf().disable()
                 .antMatcher("/api/**")
                 .authorizeRequests(authorize -> authorize.anyRequest().authenticated())
                 .formLogin(withDefaults())

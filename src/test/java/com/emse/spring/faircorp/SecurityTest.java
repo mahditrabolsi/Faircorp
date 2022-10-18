@@ -60,7 +60,7 @@ public class SecurityTest {
 
     public Window createWindow(String name) {
         Room room = new Room(1, "Room1");
-        Window window = new Window("name", WindowStatus.OPEN, room);
+        Window window = new Window(name, WindowStatus.OPEN, room);
         return window;
     }
 

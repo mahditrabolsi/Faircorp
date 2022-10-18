@@ -28,7 +28,7 @@ public class SpringSecurityConfig {
                 User.withUsername("user").password(encoder.encode("password")).roles(ROLE_USER).build()
         );
         manager.createUser(
-                User.withUsername("admin").password(encoder.encode("admin")).roles(ROLE_ADMIN).build()
+                User.withUsername("admin").password(encoder.encode("admin")).roles(ROLE_USER,ROLE_ADMIN).build()
         );
         return manager;
     }
@@ -37,7 +37,7 @@ public class SpringSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .antMatcher("/api/**")
-                .authorizeRequests(authorize -> authorize.anyRequest().hasRole("ADMIN"))
+                .authorizeRequests(authorize -> authorize.anyRequest().authenticated())
                 .formLogin(withDefaults())
                 .httpBasic(withDefaults())
                 .build();

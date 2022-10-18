@@ -30,12 +30,14 @@ public class WindowDaoCustomImpl implements WindowDaoCustom {
     }
 
     @Override
-    public Window findWindowByRoomName(String name) {
-        String jpql = "select w from Window w where w.room.name = :name";
+    public List<Window> findWindowByRoomId(Long Id) {
+        String jpql = "select w from Window w where w.room.id = :id";
         return em.createQuery(jpql, Window.class)
-                .setParameter("name", name)
-                .getSingleResult();
+                .setParameter("id", Id)
+                .getResultList();
     }
+
+
 
 
 }

@@ -30,9 +30,9 @@ public class WindowController {
         return windowDao.findAll().stream().map(WindowDto::new).collect(Collectors.toList());  // (6)
     }
 
-    @GetMapping(path = "/{id}")
-    public WindowDto findById(@PathVariable Long id) {
-        return windowDao.findById(id).map(WindowDto::new).orElse(null); // (7)
+    @GetMapping(path = "/room/{room_id}")
+    public List<WindowDto> findWindowsByRoomId(@PathVariable Long room_id) {
+        return windowDao.findWindowByRoomId(room_id).stream().map(WindowDto::new).collect(Collectors.toList());
     }
 
     @PutMapping(path = "/{id}/switch")

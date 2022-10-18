@@ -8,4 +8,5 @@ public interface HeaterDaoCustom {
 
     void deleteAllHeatersByRoom(Long id);
     List<Heater> findRoomOpenHeaters(Long id);
+    List<Heater> findHeaterByRoomId(Long Id);
 }

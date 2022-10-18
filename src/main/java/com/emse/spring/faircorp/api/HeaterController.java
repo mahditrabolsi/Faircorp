@@ -42,8 +42,8 @@ public class HeaterController {
     }
 
     @GetMapping(path = "/room/{room_id}")
-    public HeaterDto findHeatersByRoomId(@PathVariable Long room_id) {
-        return heaterDao.findById(room_id).map(HeaterDto::new).orElse(null);
+    public List<HeaterDto> findHeatersByRoomId(@PathVariable Long room_id) {
+        return heaterDao.findHeaterByRoomId(room_id).stream().map(HeaterDto::new).collect(Collectors.toList());
     }
 
     @DeleteMapping(path = "/{heater_id}")

@@ -36,18 +36,16 @@ public class WindowController {
     }
 
     @PostMapping(path = "/switch/{window_id}")
-    public WindowDto switchStatus(@PathVariable Long id) {
-        Window window = windowDao.findById(id).orElseThrow(IllegalArgumentException::new);
+    public WindowDto switchStatus(@PathVariable Long window_id) {
+        Window window = windowDao.findById(window_id).orElseThrow(IllegalArgumentException::new);
         window.setWindowStatus(window.getWindowStatus() == WindowStatus.OPEN ? WindowStatus.CLOSED: WindowStatus.OPEN);
         return new WindowDto(window);
     }
 
-    @PostMapping // (8)
+    @PostMapping
     public WindowDto create(@RequestBody WindowDto dto) {
-        // WindowDto must always contain the window room
         Room room = roomDao.getReferenceById(dto.getRoomId());
         Window window = null;
-        // On creation id is not defined
         if (dto.getId() == null) {
             window = windowDao.save(new Window( dto.getName(), dto.getWindowStatus(),room));
         }

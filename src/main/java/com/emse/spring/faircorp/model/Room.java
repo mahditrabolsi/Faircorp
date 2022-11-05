@@ -46,6 +46,14 @@ public class Room {
         this.building = building;
     }
 
+    public Room(Integer floor, String name, Double current_temperature, Double target_temperature, Building building) {
+        this.floor = floor;
+        this.name = name;
+        this.current_temperature = current_temperature;
+        this.target_temperature = target_temperature;
+        this.building = building;
+    }
+
     public List<Heater> getHeaters() {
         return heaters;
     }

@@ -36,7 +36,7 @@ public class RoomController {
         Room room = null;
         Building building= buildingDao.getReferenceById(dto.getBuildingId());
         if (dto.getId() == null) {
-            room = roomDao.save(new Room(dto.getFloor(),dto.getName(),building));
+            room = roomDao.save(new Room(dto.getFloor(),dto.getName(),dto.getCurrentTemperature(),dto.getTargetTemperature(),building));
         } else {
             room = roomDao.getReferenceById(dto.getId());
             room.setFloor(dto.getFloor());

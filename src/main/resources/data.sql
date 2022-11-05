@@ -19,9 +19,9 @@ INSERT INTO Heater(id, heater_status, name, power, room_id) VALUES(-3, 'OFF', 'H
 
 INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-10, 'CLOSED', 'Window 1', -10);
 INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-9, 'CLOSED', 'Window 2', -10);
-INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-8, 'OPEN', 'Window 1', -9);
-INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-7, 'CLOSED', 'Window 2', -9);
-INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-6, 'CLOSED', 'Window 1', -8);
-INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-3, 'CLOSED', 'Window 2', -8);
-INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-5, 'OPEN', 'Window 1', -7);
-INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-4, 'CLOSED', 'Window 2', -7);
+INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-8, 'OPEN', 'Window 3', -9);
+INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-7, 'CLOSED', 'Window 4', -9);
+INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-6, 'CLOSED', 'Window 5', -8);
+INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-3, 'CLOSED', 'Window 6', -8);
+INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-5, 'OPEN', 'Window 7', -7);
+INSERT INTO RWindow(id, window_status, name, room_id) VALUES(-4, 'CLOSED', 'Window 8', -7);

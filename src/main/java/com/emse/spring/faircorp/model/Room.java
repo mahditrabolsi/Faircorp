@@ -24,10 +24,10 @@ public class Room {
     @ManyToOne(optional = false)
     private Building building;
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "room",cascade = CascadeType.REMOVE)
     private List<Heater> heaters;
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "room",cascade = CascadeType.REMOVE)
     private List<Window> windows;
 
 

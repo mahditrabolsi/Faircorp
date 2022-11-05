@@ -45,7 +45,6 @@ public class BuildingController {
     public BuildingDto findById(@PathVariable Long building_id) {
         return buildingDao.findById(building_id).map(BuildingDto::new).orElse(null);
     }
-    //Delete a building
     @DeleteMapping(path = "/{building_id}")
     public void delete(@PathVariable Long building_id) {
         buildingDao.deleteById(building_id);

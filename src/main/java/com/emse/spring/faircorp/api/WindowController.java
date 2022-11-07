@@ -52,6 +52,9 @@ public class WindowController {
         else {
             window = windowDao.getReferenceById(dto.getId());  // (9)
             window.setWindowStatus(dto.getWindowStatus());
+            window.setName(dto.getName());
+            window.setRoom(room);
+
         }
         return new WindowDto(window);
     }

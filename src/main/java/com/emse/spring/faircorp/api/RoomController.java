@@ -40,10 +40,12 @@ public class RoomController {
         } else {
             room = roomDao.getReferenceById(dto.getId());
             room.setFloor(dto.getFloor());
+            room.setName(dto.getName());
+            room.setCurrent_temperature(dto.getCurrentTemperature());
+            room.setTarget_temperature(dto.getTargetTemperature());
         }
         return new RoomDto(room);
     }
-    //read a room
     @GetMapping(path = "/{room_id}")
     public RoomDto findById(@PathVariable Long room_id) {
         return roomDao.findById(room_id).map(RoomDto::new).orElse(null);

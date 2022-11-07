@@ -38,6 +38,9 @@ public class HeaterController {
         } else {
             heater = heaterDao.getReferenceById(dto.getId());
             heater.setHeaterStatus(dto.getHeaterStatus());
+            heater.setName(dto.getName());
+            heater.setRoom(room);
+            heater.setPower(dto.getPower());
         }
         return new HeaterDto(heater);
     }

@@ -34,7 +34,7 @@ public class HeaterController {
         Room room= roomDao.getReferenceById(dto.getRoomId());
         Heater heater = null;
         if (dto.getId() == null) {
-            heater = heaterDao.save(new Heater(dto.getName(),room,dto.getHeaterStatus()));
+            heater = heaterDao.save(new Heater(dto.getName(),room,dto.getPower(),dto.getHeaterStatus()));
         } else {
             heater = heaterDao.getReferenceById(dto.getId());
             heater.setHeaterStatus(dto.getHeaterStatus());

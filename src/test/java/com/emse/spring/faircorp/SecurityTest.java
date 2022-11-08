@@ -38,9 +38,7 @@ public class SecurityTest {
     void shouldLoadAWindowAndReturnNullIfNotFound() throws Exception {
         given(windowDao.findById(999L)).willReturn(Optional.empty());
         mockMvc.perform(get("/api/windows/999").accept(APPLICATION_JSON))
-                // check the HTTP response
                 .andExpect(status().isOk())
-                // the content can be tested with Json path
                 .andExpect(content().string(""));
     }
     @Test
@@ -52,7 +50,6 @@ public class SecurityTest {
         given(windowDao.findById(999L)).willReturn(Optional.of(expectedWindow));
 
         mockMvc.perform(put("/api/windows/999/switch").accept(APPLICATION_JSON).with(csrf()))
-                // check the HTTP response
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("window 1"))
                 .andExpect(jsonPath("$.windowStatus").value("CLOSED"));
@@ -60,8 +57,7 @@ public class SecurityTest {
 
     public Window createWindow(String name) {
         Room room = new Room(1, "Room1");
-        Window window = new Window(name, WindowStatus.OPEN, room);
-        return window;
+        return new Window(name, WindowStatus.OPEN, room);
     }
 
 

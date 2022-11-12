@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/windows")
 @Transactional
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins="localhost:3010")
 public class WindowController {
 
     private final WindowDao windowDao;

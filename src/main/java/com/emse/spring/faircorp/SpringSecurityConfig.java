@@ -30,7 +30,7 @@ public class SpringSecurityConfig {
                 User.withUsername("mahdi").password(encoder.encode("user")).roles(ROLE_USER).build()
         );
         manager.createUser(
-                User.withUsername("mahdi").password(encoder.encode("admin")).roles(ROLE_USER,ROLE_ADMIN).build()
+                User.withUsername("admin").password(encoder.encode("admin")).roles(ROLE_USER,ROLE_ADMIN).build()
         );
         return manager;
     }

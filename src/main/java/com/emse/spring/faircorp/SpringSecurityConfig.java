@@ -10,10 +10,12 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
+@CrossOrigin
 public class SpringSecurityConfig {
 
     private static final String ROLE_USER = "USER";
@@ -25,10 +27,10 @@ public class SpringSecurityConfig {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(
-                User.withUsername("user").password(encoder.encode("password")).roles(ROLE_USER).build()
+                User.withUsername("mahdi").password(encoder.encode("user")).roles(ROLE_USER).build()
         );
         manager.createUser(
-                User.withUsername("admin").password(encoder.encode("admin")).roles(ROLE_USER,ROLE_ADMIN).build()
+                User.withUsername("mahdi").password(encoder.encode("admin")).roles(ROLE_USER,ROLE_ADMIN).build()
         );
         return manager;
     }

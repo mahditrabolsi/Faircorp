@@ -16,14 +16,17 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @CrossOrigin
+
 public class SpringSecurityConfig {
+//All I had to do, was to go inside my WebSecurityConfig class, and inside the configure, put a http.cors()
+
+
 
     private static final String ROLE_USER = "USER";
     private static final String ROLE_ADMIN = "ADMIN";
 
     @Bean
     public UserDetailsService userDetailsService() {
-        // We create a password encoder
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(
@@ -32,12 +35,14 @@ public class SpringSecurityConfig {
         manager.createUser(
                 User.withUsername("admin").password(encoder.encode("admin")).roles(ROLE_USER,ROLE_ADMIN).build()
         );
+
         return manager;
     }
     @Bean
     @Order(1)
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
+                .cors().and()
                 .csrf().disable()
                 .antMatcher("/api/**")
                 .authorizeRequests(authorize -> authorize.anyRequest().authenticated())
@@ -46,9 +51,11 @@ public class SpringSecurityConfig {
                 .build();
     }
 
+
     @Bean
     public SecurityFilterChain filterChainMain(HttpSecurity http) throws Exception {
         return http
+                .cors().and()
                 .authorizeRequests(authorize -> authorize.anyRequest().permitAll())
                 .formLogin(withDefaults())
                 .httpBasic(withDefaults())

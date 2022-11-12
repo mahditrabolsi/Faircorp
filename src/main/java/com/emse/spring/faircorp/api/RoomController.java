@@ -8,7 +8,6 @@ import com.emse.spring.faircorp.model.HeaterStatus;
 import com.emse.spring.faircorp.model.Room;
 import com.emse.spring.faircorp.model.WindowStatus;
 import org.springframework.web.bind.annotation.*;
-
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +16,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/rooms")
 @Transactional
+@CrossOrigin
 public class RoomController {
     private final RoomDao roomDao;
     private final BuildingDao buildingDao;

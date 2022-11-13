@@ -20,7 +20,7 @@ class HeaterDaoTest {
     @Test
     public void shouldFindAHeater() {
         Heater heater = heaterDao.getReferenceById(-10L);
-        Assertions.assertThat(heater.getName()).isEqualTo("Heater1");
+        Assertions.assertThat(heater.getName()).isEqualTo("Heater 1");
         Assertions.assertThat(heater.getHeaterStatus()).isEqualTo(HeaterStatus.ON);
     }
 }

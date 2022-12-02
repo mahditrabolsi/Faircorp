@@ -18,10 +18,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @CrossOrigin
 
 public class SpringSecurityConfig {
-//All I had to do, was to go inside my WebSecurityConfig class, and inside the configure, put a http.cors()
-
-
-
     private static final String ROLE_USER = "USER";
     private static final String ROLE_ADMIN = "ADMIN";
 

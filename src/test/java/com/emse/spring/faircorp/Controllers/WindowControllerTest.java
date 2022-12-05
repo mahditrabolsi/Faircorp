@@ -58,60 +58,6 @@ class WindowControllerTest {
                 .andExpect(jsonPath("$[1].name").value("window 2"));
     }
 
-
-
-
-
-    @Test
-    void shouldSwitchWindow() throws Exception {
-        Window expectedWindow = createWindow("Window 1");
-        Assertions.assertThat(expectedWindow.getWindowStatus()).isEqualTo(WindowStatus.OPEN);
-        given(windowDao.findById(-10L)).willReturn(Optional.of(expectedWindow));
-        mockMvc.perform(post("/api/windows/switch/-10").header("Authorization", auth_header))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("Window 1"))
-                .andExpect(jsonPath("$.windowStatus").value("CLOSED"));
-    }
-
-    @Test
-    void shouldUpdateWindow() throws Exception {
-        Window expectedWindow = createWindow("window 1");
-        expectedWindow.setId(1L);
-        String json = objectMapper.writeValueAsString(new WindowDto(expectedWindow));
-
-        given(roomDao.getReferenceById(anyLong())).willReturn(expectedWindow.getRoom());
-        given(windowDao.getReferenceById(anyLong())).willReturn(expectedWindow);
-        given(windowDao.save(any(Window.class))).willReturn(expectedWindow);
-
-        mockMvc.perform(post("/api/windows").header("Authorization", auth_header).contentType(APPLICATION_JSON).content(json))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType(APPLICATION_JSON))
-                .andExpect(jsonPath("$.name").value("window 1"))
-                .andExpect(jsonPath("$.windowStatus").value("OPEN"));
-    }
-
-    @Test
-    void shouldCreateWindow() throws Exception {
-        Window expectedWindow = createWindow("window 1");
-        expectedWindow.setId(null);
-        String json = objectMapper.writeValueAsString(new WindowDto(expectedWindow));
-
-        given(roomDao.getReferenceById(anyLong())).willReturn(expectedWindow.getRoom());
-        given(windowDao.save(any())).willReturn(expectedWindow);
-
-        mockMvc.perform(post("/api/windows").header("Authorization", auth_header).content(json).contentType(APPLICATION_JSON_VALUE))
-                // check the HTTP response
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value("window 1"));
-    }
-
-    @Test
-    void shouldDeleteWindow() throws Exception {
-        mockMvc.perform(delete("/api/windows/-3").header("Authorization", auth_header))
-                .andExpect(status().isOk());
-
-    }
-
     private Window createWindow(String name) {
         Room room = new Room(2, "Room1");
         return new Window(name, WindowStatus.OPEN, room);

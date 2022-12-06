@@ -2,6 +2,7 @@ package com.emse.spring.faircorp.dao;
 
 import com.emse.spring.faircorp.model.Heater;
 import com.emse.spring.faircorp.model.HeaterStatus;
+import org.apache.logging.log4j.core.impl.Log4jContextFactory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,6 +17,8 @@ class HeaterDaoTest {
 
     @Autowired
     private HeaterDao heaterDao;
+
+    Log4jContextFactory log4jContextFactory = new Log4jContextFactory();
 
     @Test
     public void shouldFindAHeater() {

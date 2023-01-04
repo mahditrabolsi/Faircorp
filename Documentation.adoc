@@ -9,7 +9,7 @@ To get started, you need to have a running instance of the Faircorp
 using gradle.
 
 ----
- ./gradlew bootRun
+ ./gradlew build
 ----
 Then, you can access the application at http://localhost:8080
 

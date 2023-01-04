@@ -1,0 +1,70 @@
+# Faircorp
+
+Faircorp is a spring boot application that allows you to simulate a
+digital twin for Buildings. It allows to control windows and heaters in rooms.
+
+### Getting started
+
+To get started, you need to have a running instance of the Faircorp
+using gradle.
+
+----
+ ./gradlew bootRun
+----
+Then, you can access the application at http://localhost:8080
+
+#### Running with docker
+
+You can also run the application using docker. To do so, you need to
+build the docker image using the following command:
+
+----
+# pull image from docker hub
+docker pull mahditrabolsi/faircorp-spring
+
+# run the image on port 8080
+docker run -p 4000:8080 -t mahditrabolsi/faircorp-spring
+----
+### Tutorial
+
+After starting the application, you can access the application at
+http://localhost:8080. You can then create a buildings and rooms. You
+can also control the windows and heaters of the rooms.
+
+using the apis provided later in this document.
+
+### API
+
+The Faircorp application provides a REST API to control the windows and
+heaters of the rooms. The following endpoints are available:
+
+##### Building
+- GET /api/buildings : get all buildings
+- GET /api/buildings/{id} : get a building by id
+- POST /api/buildings : create a building
+- DElETE /api/buildings/{id} : delete a building by id
+
+##### Room
+- GET /api/rooms : get all rooms
+- GET /api/rooms/{id} : get a room by id
+- POST /api/rooms : create a room
+- DELETE /api/rooms/{id} : delete a room by id
+- PUT /api/rooms/{id}/switchHeaters : switch heaters of a room by id
+- PUT /api/rooms/{id}/switchWindows : switch windows of a room by id
+- GET /api/rooms/building/{buildingId} : get all rooms of a building by id
+
+##### Window
+
+- GET /api/windows : get all windows
+- GET /api/windows/room/{roomId} : get all windows of a room by id
+- POST /api/windows : create a window
+- DELETE /api/windows/{id} : delete a window by id
+- PUT /api/windows/{id}/switch : switch a window by id
+
+##### Heater
+
+- GET /api/heaters : get all heaters
+- GET /api/heaters/room/{roomId} : get all heaters of a room by id
+- POST /api/heaters : create a heater
+- DELETE /api/heaters/{id} : delete a heater by id
+- PUT /api/heaters/{id}/switch : switch a heater by id

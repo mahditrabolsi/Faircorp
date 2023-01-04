@@ -4,11 +4,14 @@ package com.emse.spring.faircorp.api;
 import com.emse.spring.faircorp.dao.BuildingDao;
 import com.emse.spring.faircorp.dto.BuildingDto;
 import com.emse.spring.faircorp.model.Building;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
+
 
 @RestController
 @RequestMapping("/api/buildings")
@@ -22,13 +25,20 @@ public class BuildingController {
         this.buildingDao = buildingDao;
     }
 
+    private static Logger logger = LogManager.getLogger(BuildingController.class);
     @GetMapping
     public List<BuildingDto> findAll() {
+        logger.info("BuildingController:findAll");
+
         return buildingDao.findAll().stream().map(BuildingDto::new).collect(Collectors.toList());
 
     }
 
-
+    /*
+    * This method is used to create a new building or update an existing building
+    * @param dto
+    * @return BuildingDto
+    * */
 
     @PostMapping
     public BuildingDto create(@RequestBody BuildingDto dto) {

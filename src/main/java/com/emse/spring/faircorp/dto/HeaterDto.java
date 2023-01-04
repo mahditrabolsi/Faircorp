@@ -13,7 +13,14 @@ public class HeaterDto {
 
     public HeaterDto() {
     }
-
+/**
+    * This is a constructor for HeaterDto
+    * @param id - id of the heater
+    * @param name - name of the heater
+    * @param power - power of the heater
+    * @param roomId - id of the room
+    * @param heaterStatus - status of the heater
+     **/
     public HeaterDto(Heater heater) {
         this.id = heater.getId();
         this.name = heater.getName();

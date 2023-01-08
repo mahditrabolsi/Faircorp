@@ -1,8 +1,11 @@
-#name: FairCorp CI
+name: Java CI
+
 on: [push]
+
 jobs:
   build:
     runs-on: windows-latest
+
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -10,17 +13,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-      # Build the Spring project using Gradle
-      - name: Build project
-        run: gradle build
-      # Run the test suite using Gradle
-      - name: Run tests
-        run: gradle test
-
-
-#      - name: Validate Gradle wrapper
-#        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
-#      - name: Build with Gradle
-#        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-#        with:
-#          arguments: build
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+        with:
+          arguments: build

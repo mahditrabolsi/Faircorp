@@ -1,8 +1,5 @@
 #name: FairCorp CI
-#on:
-#  push:
-#    tags:
-#      - v*
+on: [push]
 #jobs:
 #  build:
 #    runs-on: windows-latest
